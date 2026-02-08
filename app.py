@@ -1,3 +1,8 @@
+
+import os
+os.system("pip install --upgrade ultralytics")
+
+
 import streamlit as st
 from ultralytics import YOLO
 from PIL import Image
@@ -5,8 +10,6 @@ import numpy as np
 import cv2
 from pathlib import Path
 
-import os
-os.system("pip install --upgrade ultralytics")
 
 # -----------------------------
 # Load custom YOLOv8 model
