@@ -10,7 +10,7 @@ from ultralytics import YOLO
 # -----------------------------
 @st.cache_resource
 def load_model():
-    model_path = Path("models/best.pt")
+    model_path = Path("best.pt")
     assert model_path.exists(), f"Model not found: {model_path}"
     return YOLO(model_path)
 
