@@ -35,7 +35,7 @@ if uploaded_file:
     img_array = np.array(image)
 
     # Run inference
-    results = model(img_array, conf=0.4)
+    results = model(img_array, conf=0.1)
 
     # Draw results
     annotated_img = results[0].plot()  # returns BGR image
