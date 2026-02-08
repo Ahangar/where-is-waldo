@@ -1,6 +1,6 @@
 
-import os
-os.system("pip install --upgrade ultralytics")
+#import os
+#os.system("pip install --upgrade ultralytics")
 
 
 import streamlit as st
