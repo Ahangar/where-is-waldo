@@ -1,7 +1,7 @@
 import streamlit as st
 from PIL import Image
 from ultralytics import YOLO
-import cv2
+from PIL import ImageDraw, ImageFont
 
 
 @st.cache_resource
@@ -18,17 +18,30 @@ if uploaded:
     image = Image.open(uploaded).convert("RGB")
     st.image(image, caption="Input")
 
-    # Annotated image with bounding boxes
-
     results = model(image)
-    annotated = results[0].plot()
+    #annotated = results[0].plot()
+    
+    #bounding box
+    result = results[0]
 
-    annotated = cv2.cvtColor(annotated, cv2.COLOR_BGR2RGB)  # convert to RGB
+    boxes = result.boxes.xyxy.cpu().numpy()   # [x1, y1, x2, y2]
+    scores = result.boxes.conf.cpu().numpy()  # confidence
+    classes = result.boxes.cls.cpu().numpy()  # class index
+    names = result.names                     # class names
 
-    # Display in Jupyter
-    plt.figure(figsize=(10,10))
-    plt.imshow(annotated)
-    plt.axis("off")
-    plt.show()
 
-    st.image(annotated, caption="Detected")
+    img = image.copy()
+    draw = ImageDraw.Draw(img)
+
+    for box, score, cls in zip(boxes, scores, classes):
+        x1, y1, x2, y2 = box
+        label = f"{names[int(cls)]} {score:.2f}"
+
+        draw.rectangle([x1, y1, x2, y2], outline="red", width=3)
+        draw.text((x1, y1 - 10), label, fill="red")
+
+    st.image(img, caption="Custom bounding boxes", use_column_width=True)
+
+
+
+    #st.image(annotated, caption="Detected")
