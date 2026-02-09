@@ -1,3 +1,9 @@
+import os
+os.environ["OPENCV_VIDEOIO_PRIORITY_MSMF"] = "0"
+os.environ["OPENCV_LOG_LEVEL"] = "ERROR"
+os.environ["QT_QPA_PLATFORM"] = "offscreen"
+os.environ["DISPLAY"] = ":0"
+
 import streamlit as st
 from PIL import Image
 from ultralytics import YOLO
