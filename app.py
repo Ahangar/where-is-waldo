@@ -29,6 +29,7 @@ if uploaded:
     
     #bounding box
     result = results[0]
+    print(result)
 
     boxes = result.boxes.xyxy.cpu().numpy()   # [x1, y1, x2, y2]
     scores = result.boxes.conf.cpu().numpy()  # confidence
