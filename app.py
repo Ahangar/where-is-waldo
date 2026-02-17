@@ -22,14 +22,15 @@ uploaded = st.file_uploader("Upload an image", ["jpg", "jpeg", "png"])
 
 if uploaded:
     image = Image.open(uploaded).convert("RGB")
-    st.image(image, caption="Input")
+    image_raw = Image.open(uploaded).convert("RGB")
+    
 
     results = model(image)
     #annotated = results[0].plot()
     
     #bounding box
+    
     result = results[0]
-    print(result)
 
     boxes = result.boxes.xyxy.cpu().numpy()   # [x1, y1, x2, y2]
     scores = result.boxes.conf.cpu().numpy()  # confidence
@@ -40,14 +41,20 @@ if uploaded:
     img = image.copy()
     draw = ImageDraw.Draw(img)
 
-    for box, score, cls in zip(boxes, scores, classes):
-        x1, y1, x2, y2 = box
-        label = f"{names[int(cls)]} {score:.2f}"
+    if(max(scores)>0.1):
 
-        draw.rectangle([x1, y1, x2, y2], outline="blue", width=6)
-        draw.text((x1, y1 - 10), label, fill="blue")
+        for box, score, cls in zip(boxes, scores, classes):
+            x1, y1, x2, y2 = box
+            label = f"{names[int(cls)]} {score:.2f}"
 
-    st.image(img, caption="Custom bounding boxes", use_column_width=True)
+            draw.rectangle([x1, y1, x2, y2], outline="blue", width=6)
+            draw.text((x1, y1 - 15), label, fill="blue")
+
+
+        st.image(img, caption="Waldo Detected", use_column_width=True)
+
+    else:
+        st.image(image_raw, caption="Waldo Not Detected!")
 
 
 
