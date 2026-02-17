@@ -43,8 +43,8 @@ if uploaded:
         x1, y1, x2, y2 = box
         label = f"{names[int(cls)]} {score:.2f}"
 
-        draw.rectangle([x1, y1, x2, y2], outline="red", width=3)
-        draw.text((x1, y1 - 10), label, fill="red")
+        draw.rectangle([x1, y1, x2, y2], outline="blue", width=6)
+        draw.text((x1, y1 - 10), label, fill="blue")
 
     st.image(img, caption="Custom bounding boxes", use_column_width=True)
 
