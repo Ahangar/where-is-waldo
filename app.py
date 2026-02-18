@@ -56,7 +56,7 @@ if uploaded:
 
     else:
         
-        st.info("No detections above threshold.")
+        st.info("Waldo was not found!")
         st.image(image_raw)
 
 
