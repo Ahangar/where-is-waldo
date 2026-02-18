@@ -51,8 +51,8 @@ if uploaded:
             draw.rectangle([x1, y1, x2, y2], outline="blue", width=6)
             draw.text((x1, y1 - 15), label, fill="blue")
 
-
-        st.image(img, caption="Waldo Detected", use_column_width=True)
+        st.info("Waldo was detected!")
+        st.image(img)
 
     else:
         
