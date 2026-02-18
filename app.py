@@ -42,17 +42,22 @@ if uploaded:
     draw = ImageDraw.Draw(img)
 
 
-    if ((len(scores) != 0) & (max(scores)>0.1)):
+    if ((len(scores) != 0)
+        if(max(scores)>0.1)):
 
-        for box, score, cls in zip(boxes, scores, classes):
-            x1, y1, x2, y2 = box
-            label = f"{names[int(cls)]} {score:.2f}"
+            for box, score, cls in zip(boxes, scores, classes):
+                x1, y1, x2, y2 = box
+                label = f"{names[int(cls)]} {score:.2f}"
 
-            draw.rectangle([x1, y1, x2, y2], outline="blue", width=6)
-            draw.text((x1, y1 - 15), label, fill="blue")
+                draw.rectangle([x1, y1, x2, y2], outline="blue", width=6)
+                draw.text((x1, y1 - 15), label, fill="blue")
 
-        st.info("Waldo was detected!")
-        st.image(img)
+            st.info("Waldo was detected!")
+            st.image(img)
+
+        else: 
+            st.info("Waldo was not found!")
+            st.image(image_raw)
 
     else:
         
