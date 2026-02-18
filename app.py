@@ -42,8 +42,8 @@ if uploaded:
     draw = ImageDraw.Draw(img)
 
 
-    if ((len(scores) != 0)
-        if(max(scores)>0.1)):
+    if (len(scores) != 0)
+        if(max(scores)>0.1):
 
             for box, score, cls in zip(boxes, scores, classes):
                 x1, y1, x2, y2 = box
