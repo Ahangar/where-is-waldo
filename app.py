@@ -41,7 +41,8 @@ if uploaded:
     img = image.copy()
     draw = ImageDraw.Draw(img)
 
-    if(max(scores)>0.1):
+
+    if scores and any(s > 0.1 for s in scores):
 
         for box, score, cls in zip(boxes, scores, classes):
             x1, y1, x2, y2 = box
@@ -54,7 +55,9 @@ if uploaded:
         st.image(img, caption="Waldo Detected", use_column_width=True)
 
     else:
-        st.image(image_raw, caption="Waldo Not Detected!")
+        
+        st.info("No detections above threshold.")
+        st.image(image_raw)
 
 
 
