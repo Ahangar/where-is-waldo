@@ -53,7 +53,7 @@ if uploaded:
                 draw.text((x1, y1 - 15), label, fill="blue")
 
             st.info("Waldo was detected!")
-            st.image(img)
+            st.image(img, use_container_width=True)
 
         else: 
             st.info("Waldo was not found!")
