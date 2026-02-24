@@ -46,7 +46,7 @@ if uploaded:
             
             for box, score, cls in zip(boxes, scores, classes):
                 #only plot the highest score value
-                if(score == max(scores):
+                if(score == max(scores)):
                     x1, y1, x2, y2 = box
                     label = f"{names[int(cls)]} {score:.2f}"
 
