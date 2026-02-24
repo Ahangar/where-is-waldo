@@ -44,17 +44,15 @@ if uploaded:
     if (len(scores) != 0):
         if(max(scores)>0.1):
             
-        # find index of the maximum score
-            max_idx = max(range(len(scores)), key=lambda i: scores[i])
+            for box, score, cls in zip(boxes, scores, classes):
+                x1, y1, x2, y2 = box
+                label = f"{names[int(cls)]} {score:.2f}"
 
-            # unpack only the best detection
-            box, score, cls = boxes[max_idx], scores[max_idx], classes[max_idx]
-            x1, y1, x2, y2 = box
-            label = f"{names[int(cls)]} {score:.2f}"
+                draw.rectangle([x1, y1, x2, y2], outline="blue", width=6)
+                draw.text((x1, y1 - 15), label, fill="blue")
 
-            # draw only the top-scoring box and label
-            draw.rectangle([x1, y1, x2, y2], outline="blue", width=10)
-            draw.text((x1, y1 - 15), label, fill="blue")
+            st.info("Waldo was detected!")
+            st.image(img,  use_column_width=True)
 
 
         else: 
