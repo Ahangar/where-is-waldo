@@ -47,7 +47,7 @@ if uploaded:
                 #only plot the highest score value
                 if(score == max(scores)):
                     x1, y1, x2, y2 = box
-                    label = f"{names[int(cls)]}# {score:.2f}"
+                    label = f"{names[int(cls)]}" # {score:.2f}"
 
                     #box width
                     W, H = img.size
