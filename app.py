@@ -5,9 +5,8 @@ os.environ["QT_QPA_PLATFORM"] = "offscreen"
 os.environ["DISPLAY"] = ":0"
 
 import streamlit as st
-from PIL import Image
 from ultralytics import YOLO
-from PIL import ImageDraw, ImageFont
+from PIL import Image, ImageFont, ImageDraw, ImageFont
 
 
 @st.cache_resource
@@ -48,15 +47,18 @@ if uploaded:
                 #only plot the highest score value
                 if(score == max(scores)):
                     x1, y1, x2, y2 = box
-                    label = f"{names[int(cls)]} {score:.2f}"
+                    label = f"{names[int(cls)]}# {score:.2f}"
 
                     #box width
                     W, H = img.size
                     # Tune 0.004–0.008 depending on how thick you want the line
                     line_w = max(2, int(min(W, H) * 0.01))
+                    
+                    font_size = max(12, int(min(W, H) * 0.03))
+                    font = ImageFont.truetype("DejaVuSans.ttf", size=font_size)
 
                     draw.rectangle([x1, y1, x2, y2], outline="blue", width=line_w)
-                    draw.text((x1, y1 - 15), label, fill="blue")
+                    draw.text((x1, y1 - 15), label, fill="blue", font=font)
 
             st.info("Waldo was detected!")
             st.image(img,  use_column_width=True)
