@@ -15,7 +15,7 @@ def load_model():
 
 model = load_model()
 
-st.title("YOLO Object Detection")
+st.title("Where is Waldo? A Yolo Based Object Detection Model")
 
 uploaded = st.file_uploader("Upload an image", ["jpg", "jpeg", "png"])
 
