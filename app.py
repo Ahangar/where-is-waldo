@@ -11,7 +11,7 @@ from PIL import Image, ImageFont, ImageDraw, ImageFont
 
 @st.cache_resource
 def load_model():
-    return YOLO("best.pt")
+    return YOLO("waldoYolo.pt")
 
 model = load_model()
 
