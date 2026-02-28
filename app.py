@@ -23,10 +23,9 @@ Upload your image to see if this computer vision model can find **Waldo**.
 
 If you are using your phone, please take a **horizontal image**.
 
-📖 For more reading about the app, check out my blog post:  
-["Where is Waldo ChatGPT?"](https://where-is-waldo.streamlit.app/)
+📖 Check out my blog post for more reading: ["Where is Waldo ChatGPT?"](https://medium.com/@Faraz_EA/where-is-waldo-chatgpt-4c9687e666c1)
 
-💻 Github code: [View the source code](https://github.com/Ahangar/where-is-waldo)
+💻 [View the source code](https://github.com/Ahangar/where-is-waldo)
 """)
 
 uploaded = st.file_uploader("Upload an image", ["jpg", "jpeg", "png"])
