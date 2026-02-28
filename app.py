@@ -16,6 +16,18 @@ def load_model():
 model = load_model()
 
 st.title("Where is Waldo? A Yolo Based Object Detection Model")
+st.markdown("""
+### 🕵️‍♂️ Where is Waldo?
+
+Upload your image to see if this computer vision model can find **Waldo**.
+
+If you are using your phone, please take a **horizontal image**.
+
+📖 For more reading about the app, check out my blog post:  
+["Where is Waldo ChatGPT?"](https://where-is-waldo.streamlit.app/)
+
+💻 Github code: [View the source code](https://github.com/Ahangar/where-is-waldo)
+""")
 
 uploaded = st.file_uploader("Upload an image", ["jpg", "jpeg", "png"])
 
