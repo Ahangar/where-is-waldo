@@ -65,11 +65,11 @@ if uploaded:
                     # Tune 0.004–0.008 depending on how thick you want the line
                     line_w = max(2, int(min(W, H) * 0.01))
                     
-                    font_size = max(14, int(min(W, H) * 0.04))
-                    font = ImageFont.truetype("DejaVuSans.ttf", size=font_size)
+                    #font_size = max(14, int(min(W, H) * 0.04))
+                    #font = ImageFont.truetype("DejaVuSans.ttf", size=font_size)
 
                     draw.rectangle([x1, y1, x2, y2], outline="blue", width=line_w)
-                    draw.text((x1, y1 - line_w - font_size), label, fill="blue", font=font)
+                    draw.text((x1, y1 - line_w - font_size), label, fill="blue")
 
             st.info("Waldo was detected!")
             st.image(img,  use_column_width=True)
