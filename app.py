@@ -69,7 +69,7 @@ if uploaded:
                     #font = ImageFont.truetype("DejaVuSans.ttf", size=font_size)
 
                     draw.rectangle([x1, y1, x2, y2], outline="blue", width=line_w)
-                    draw.text((x1, y1 - line_w - font_size), label, fill="blue")
+                   # draw.text((x1, y1 - line_w - font_size), label, fill="blue")
 
             st.info("Waldo was detected!")
             st.image(img,  use_column_width=True)
